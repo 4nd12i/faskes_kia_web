@@ -153,6 +153,17 @@ class M_master extends CI_Model
       }
     }
 
+    function getDataProgramKB(){
+  	$query="select * from t_programkb where ST ='1'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
     function getRiwayatKesehatanIbu(){
   	$query="select tki.id_cek, mpi.nik, mpi.nama, tki.tgl_periksa, tki.kapan_kembali, tki.riwayat_penyakit, tki.keluhan_sekarang,
     tki.tekanan_darah, tki.umur_kehamilan, tki.letak_janin, tki.nasihat FROM m_pasien_ibu mpi INNER JOIN
@@ -180,7 +191,7 @@ class M_master extends CI_Model
     }
 
     function getRiwayatPersalinan(){
-  	$query="select mpi.nik, mpi.nama, tp.tgl_persalinan, tp.usia_kehamilan, tp.cara_persalinan, tp.keadaan_ibu, tp.penolong_persalinan
+  	$query="select tp.id_persalinan, mpi.nik, mpi.nama, tp.tgl_persalinan, tp.usia_kehamilan, tp.cara_persalinan, tp.keadaan_ibu, tp.penolong_persalinan
             from m_pasien_ibu mpi inner join t_persalinan tp on mpi.id_pasien_ibu = tp.id_pasien_ibu
             inner join m_bidan mb on tp.id_bidan = mb.id_bidan
             WHERE tp.ST = 1";
@@ -230,6 +241,31 @@ class M_master extends CI_Model
   	$query="select tia.id_cek, mpa.nama, mpa.nama_ayah, mpa.nama_ibu, tia.tgl_periksa, tia.usia, tia.jenis_imunisasi,
             tia.keterangan FROM m_pasien_anak mpa INNER JOIN t_imunisasi_anak tia ON mpa.id_pasien_anak = tia.id_pasien_anak
             WHERE mpa.id_pasien_anak = '$idpasienanak' AND tia.ST = 1 AND mpa.ST = 1";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getHistoryPersalinan($idpasienibu){
+  	$query="select tp.id_persalinan, mpi.id_pasien_ibu, mpi.nik, mpi.nama, tp.tgl_persalinan, tp.usia_kehamilan, tp.cara_persalinan, tp.keadaan_ibu, tp.penolong_persalinan
+            from m_pasien_ibu mpi inner join t_persalinan tp on mpi.id_pasien_ibu = tp.id_pasien_ibu
+            inner join m_bidan mb on tp.id_bidan = mb.id_bidan
+            WHERE tp.id_pasien_ibu = '$idpasienibu' AND tp.ST = 1 AND mpi.ST = 1";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getHistoryProgramKB($namapeserta){
+  	$query="select * from t_programkb where nama_peserta like '%$namapeserta%' ST = 1";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){
@@ -382,6 +418,17 @@ class M_master extends CI_Model
       }
     }
 
+    function getPesertaKBbyID($id){
+    $query="select * from t_programkb where nama_peserta = '$id'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
     function getUserbyID($id){
     $query="select * from m_pengguna where username = '$id'";
     $q=$this->db->query($query);
@@ -471,6 +518,28 @@ class M_master extends CI_Model
 
     function getCatatanImunisasiAnakbyID($id){
     $query="select mpa.nama_ayah, mpa.nama, mpa.nama_ibu, tia.* from t_imunisasi_anak tia INNER JOIN m_pasien_anak mpa ON tia.id_pasien_anak = mpa.id_pasien_anak where id_cek = '$id'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getCatatanPersalinanbyID($id){
+    $query="select mpi.id_pasien_ibu, mpi.nik, mpi.nama, tp.* from t_persalinan tp INNER JOIN m_pasien_ibu mpi ON tp.id_pasien_ibu = mpi.id_pasien_ibu where tp.id_persalinan = '$id'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getCatatanProgramKBbyID($id){
+    $query="select * FROM t_programkb WHERE id_programkb = '$id'";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){
@@ -657,6 +726,32 @@ class M_master extends CI_Model
     {
         $row = $q->row();
         $nm=$row->nama_ibu;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataSuamiIstri($nama){
+  	$sql="select suami_istri from t_programkb where nama_peserta = '$nama'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->suami_istri;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataUsiaPeserta($nama){
+  	$sql="select usia from t_programkb where nama_peserta = '$nama'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->usia;
     }else{
       $nm="";
     }

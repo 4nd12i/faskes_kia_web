@@ -64,18 +64,6 @@
       });
     }
 
-    function getIsiTabel(){
-    var id = document.form_utama.nik.value;
-      $.ajax({
-          type:"POST",
-          url:"<?php echo site_url('transaksi/isiTabelDetail'); ?>",
-          data: "id="+id,
-          success:function(msg){
-            $('#tabeldiv').html(msg);
-          }
-      });
-    }
-
 </script>
 <div class="wrapper">
 

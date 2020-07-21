@@ -1,31 +1,3 @@
-<script>
-
-function getNama(){
-var id = document.form_utama.nik.value;
-  $.ajax({
-      type:"POST",
-      url:"<?php echo site_url('transaksi/isiKolomNama'); ?>",
-      data: "id="+id,
-      success:function(msg){
-        $('#namadiv').html(msg);
-        getIdPasienIbu();
-      }
-  });
-}
-
-function getIdPasienIbu(){
-var id = document.form_utama.nik.value;
-  $.ajax({
-      type:"POST",
-      url:"<?php echo site_url('transaksi/isiKolomIdPasienIbu'); ?>",
-      data: "id="+id,
-      success:function(msg){
-        $('#idpasienibudiv').html(msg);
-      }
-  });
-}
-
-</script>
 <div class="wrapper">
 
   <!-- Content Wrapper. Contains page content -->

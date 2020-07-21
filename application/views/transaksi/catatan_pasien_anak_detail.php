@@ -46,12 +46,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Layanan Kesehatan
+        Catatan Kesehatan
         <small>Data Pasien Anak</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="transaksi/catatan_pasienanak_add"><i class="fa fa-dashboard"></i> Layanan Kesehatan Imunisasi </a></li>
-        <li class="active">Edit Catatan</li>
+        <li><a href="transaksi/catatan_pasienanak_add"><i class="fa fa-dashboard"></i> Catatan Kesehatan Imunisasi </a></li>
+        <li class="active">Lihat Catatan</li>
       </ol>
     </section>
 
@@ -64,7 +64,7 @@
           <!-- Box -->
           <div class="box">
             <div class="box-header">
-              <h2 class="box-title">Layanan Kesehatan Imunisasi</h2>
+              <h2 class="box-title">Catatan Kesehatan Imunisasi</h2>
             </div>
             <!-- /.box-header -->
               <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('transaksi/catatan_pasienanak_hasil'); ?>'>

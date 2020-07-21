@@ -33,12 +33,12 @@ var id = document.form_utama.nik.value;
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Layanan Kesehatan
+        Catatan Kesehatan
         <small>Persalinan</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="transaksi/catatan_pasienibu_add"><i class="fa fa-dashboard"></i> Layanan Kesehatan Persalinan </a></li>
-        <li class="active">Edit Catatan</li>
+        <li><a href="transaksi/catatan_persalinan_add"><i class="fa fa-dashboard"></i> Catatan Kesehatan Persalinan </a></li>
+        <li class="active">Lihat Catatan</li>
       </ol>
     </section>
 
@@ -51,10 +51,10 @@ var id = document.form_utama.nik.value;
           <!-- Box -->
           <div class="box">
             <div class="box-header">
-              <h2 class="box-title">Layanan Kesehatan Persalinan</h2>
+              <h2 class="box-title">Catatan Kesehatan Persalinan</h2>
             </div>
             <!-- /.box-header -->
-              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('transaksi/persalinan_save'); ?>'>
+              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('transaksi/catatan_persalinan_hasil'); ?>'>
                 <div class="box-body">
                   <?php
                     $msg=$this->session->flashdata('msg');
@@ -64,25 +64,26 @@ var id = document.form_utama.nik.value;
                     <label>NIK
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <select name="nik" id="nik" class="form-control select2" style="width: 100%;" onchange="javascript:getNama();" required>
+                    <input type="text" class="form-control" name="id_pasien_ibu" value='<?php echo $detail->nik; ?>' readonly>
+                    <!-- <select name="nik" id="nik" class="form-control select2" style="width: 100%;" onchange="javascript:getNama();" readonly>
                       <option value=""></option>
                       <?php
                         foreach($pasienibu as $pi){
                           echo "<option value='$pi->nik'>$pi->nik</option>";
                         }
                       ?>
-                    </select>
+                    </select> -->
                   </div>
                   <div class="form-group" id="idpasienibudiv">
-                    <input type="hidden" class="form-control" name="id_pasien_ibu" required>
+                    <input type="hidden" class="form-control" name="id_pasien_ibu" value='<?php echo $detail->id_pasien_ibu; ?>' readonly>
                   </div>
                   <div class="form-group">
-                    <input type="hidden" class="form-control" value="<?php $idbidan=$this->session->userdata('id_bidan'); echo $idbidan; ?>" name="id_bidan" required>
+                    <input type="hidden" class="form-control" value="<?php $idbidan=$this->session->userdata('id_bidan'); echo $idbidan; ?>" name="id_bidan" readonly>
                   </div>
                   <div class="form-group" id="namadiv">
                     <label>Nama Lengkap
                     </label>
-                    <input type="text" class="form-control" name="nama" readonly>
+                    <input type="text" class="form-control" name="nama" value='<?php echo $detail->nama; ?>' readonly>
                   </div>
                   <hr/>
                   <div class="form-group">
@@ -93,7 +94,7 @@ var id = document.form_utama.nik.value;
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="input-group date">
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tgl_persalinan" value="<?php echo date('Y/m/d') ?>" required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tgl_persalinan" value='<?php echo $detail->tgl_persalinan; ?>' readonly>
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
@@ -103,38 +104,40 @@ var id = document.form_utama.nik.value;
                     <label>Usia Kehamilan
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="number" class="form-control" placeholder="Contoh : isi angka 8 untuk 8 tahun" name="usia_kehamilan" required>
+                    <input type="number" class="form-control" placeholder="Contoh : isi angka 8 untuk 8 tahun" name="usia_kehamilan" value='<?php echo $detail->usia_kehamilan; ?>' readonly>
                   </div>
                   <div class="form-group">
                     <label>Penolong Persalinan
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="penolong_persalinan" required>
+                    <input type="text" class="form-control" name="penolong_persalinan" value='<?php echo $detail->penolong_persalinan; ?>' readonly>
                   </div>
                   <div class="form-group">
                     <label>Cara Persalinan
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <select class="form-control select2" name="cara_persalinan" id="cara_persalinan" style="width: 100%;" required>
+                    <input type="text" class="form-control" name="cara_persalinan" value='<?php echo $detail->cara_persalinan; ?>' readonly>
+                    <!-- <select class="form-control select2" name="cara_persalinan" id="cara_persalinan" style="width: 100%;" readonly>
                        <option value=""></option>
                        <option value="Persalinan Normal">Persalinan Normal</option>
                        <option value="Persalinan Dengan Alat">Persalinan Dengan Alat</option>
                        <option value="Persalinan Caesar">Persalinan Caesar</option>
                        <option value="Persalinan Di Air">Persalinan Di Air</option>
-                     </select>
+                     </select> -->
                   </div>
                   <hr/>
                   <div class="form-group">
                     <label>Keadaan Ibu
                     </label>
                     <div class="box-body pad">
-                        <textarea id="editor1" name="keadaan_ibu" rows="10" cols="80" required>
+                        <textarea id="editor1" name="keadaan_ibu" rows="10" cols="80" readonly>
+                          <?php echo $detail->keadaan_ibu; ?>
                         </textarea>
                     </div>
                   </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-success  pull-right" name="simpan" id="simpan"><i class="fa fa-plus"></i> Simpan </button>
+                  <button type="submit" class="btn btn-warning margin pull-left" name="simpan"> Kembali </button>
               </div>
             </form>
             <!-- /.box-body -->

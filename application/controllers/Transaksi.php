@@ -100,19 +100,75 @@ class Transaksi extends CI_Controller {
 		$this->load->view('template/main',$data);
 	}
 
-  public function catatan_programkb_add()
+  public function catatan_persalinan()
 	{
 		$this->load->model('M_master');
-		// $data['pasienanak']=$this->M_master->getDataPasienAnak();
-		$data['main_content']="transaksi/catatan_programkb_add";
+		$data['pasienibu']=$this->M_master->getDataPasienIbu();
+		$data['main_content']="transaksi/catatan_persalinan";
 		$this->load->view('template/main',$data);
 	}
 
   public function catatan_persalinan_add()
+  {
+    $this->load->model('M_master');
+    $data['pasienibu']=$this->M_master->getDataPasienIbu();
+    $data['main_content']="transaksi/catatan_persalinan_add";
+    $this->load->view('template/main',$data);
+  }
+
+  public function catatan_persalinan_hasil()
 	{
 		$this->load->model('M_master');
-    $data['pasienibu']=$this->M_master->getDataPasienIbu();
-		$data['main_content']="transaksi/catatan_persalinan_add";
+    $idpasienibu=$this->input->post('id_pasien_ibu');
+    $data['detail']=$this->M_master->getPasienIbubyID($idpasienibu);
+		$data['row']=$this->M_master->getHistoryPersalinan($idpasienibu);
+		$data['main_content']="transaksi/catatan_persalinan_hasil";
+		$this->load->view('template/main',$data);
+	}
+
+  public function catatan_persalinan_detail_form()
+	{
+		$id=$this->uri->segment(3);
+	  $this->load->model('M_master');
+	  $data['detail']=$this->M_master->getCatatanPersalinanbyID($id);
+
+		$data['main_content']="transaksi/catatan_persalinan_detail";
+		$this->load->view('template/main',$data);
+	}
+
+  public function catatan_programkb()
+	{
+		$this->load->model('M_master');
+		$data['programkb']=$this->M_master->getDataProgramKB();
+		$data['main_content']="transaksi/catatan_programkb";
+		$this->load->view('template/main',$data);
+	}
+
+  public function catatan_programkb_add()
+  {
+    $this->load->model('M_master');
+    // $data['pasienanak']=$this->M_master->getDataPasienAnak();
+    $data['main_content']="transaksi/catatan_programkb_add";
+    $this->load->view('template/main',$data);
+  }
+
+  public function catatan_programkb_hasil()
+	{
+		$this->load->model('M_master');
+    $namapeserta=$this->input->post('nama_peserta');
+    $data['detail']=$this->M_master->getPesertaKBbyID($namapeserta);
+		$data['row']=$this->M_master->getHistoryProgramKB($namapeserta);
+		$data['main_content']="transaksi/catatan_pasienanak_hasil";
+		$this->load->view('template/main',$data);
+	}
+
+  public function catatan_programkb_detail_form()
+	{
+		$id=$this->uri->segment(3);
+	  $this->load->model('M_master');
+	  $data['detail']=$this->M_master->getCatatanImunisasiAnakbyID($id);
+
+		$data['main_content']="transaksi/catatan_pasien_anak_detail";
 		$this->load->view('template/main',$data);
 	}
 
@@ -415,13 +471,27 @@ class Transaksi extends CI_Controller {
     ";
   }
 
-	public function isiTabelDetail(){
+	public function isiKolomNamaSuamiIstri(){
     $this->load->model('M_master');
     $id= $this->input->post('id');
 
-    $data['row']=$this->M_master->getDataNoJknPasienIbu($id);
+    $namasuamiistri=$this->M_master->getDataSuamiIstri($id);
     echo "
+    <label>Nama Suami / Istri
+    </label>
+    <input type='text' class='form-control input-lg' name='nama' value='$namasuamiistri' readonly>
+    ";
+  }
 
+	public function isiKolomUsiaPeserta(){
+    $this->load->model('M_master');
+    $id= $this->input->post('id');
+
+    $usia=$this->M_master->getDataUsiaPeserta($id);
+    echo "
+    <label>Usia
+    </label>
+    <input type='text' class='form-control input-lg' name='usia' value='$usia' readonly>
     ";
   }
 }

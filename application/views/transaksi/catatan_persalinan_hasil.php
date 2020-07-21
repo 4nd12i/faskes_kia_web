@@ -12,7 +12,6 @@
             getPekerjaan();
             getKehamilan();
             getNoJkn();
-            getIdPasienIbu();
           }
       });
     }
@@ -88,7 +87,7 @@
         Catatan Persalinan
       </h1>
       <ol class="breadcrumb">
-        <li><a href='<?php echo site_url('transaksi/catatan_pasienibu'); ?>'><i class="fa fa-dashboard"></i> Catatan Persalinan </a></li>
+        <li><a href='<?php echo site_url('transaksi/catatan_persalinan'); ?>'><i class="fa fa-dashboard"></i> Catatan Persalinan </a></li>
         <li class="active">Persalinan Ibu</li>
       </ol>
     </section>
@@ -109,31 +108,34 @@
               <div class="box-body">
                 <div class="form-group">
                   <div class="col-lg-12">
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" name="id_pasien_ibu" value="<?php echo $detail->id_pasien_ibu; ?>" readonly required>
+                    </div>
                     <div class="form-group col-xs-4">
                       <label>NIK
                         <span style="color: red;"><b>*</b></span>
                       </label>
-                      <select name="nik" id="nik" class="form-control select2" style="width: 100%;" onchange="javascript:getNama();">
+                      <input type="text" class="form-control input-lg" value="<?php echo $detail->nik; ?>" name="nik" readonly>
+                      <!-- <select name="nik" id="nik" class="form-control select2" style="width: 100%;" onchange="javascript:getNama();">
                         <option value=""></option>
                         <?php
                           foreach($pasienibu as $pi){
-                            echo "<option value='$pi->nik'>$pi->nik</option>";
+                            echo "<option value='$pi->nik'";
+                            echo $detail['nik']==$pi->nik?'selected':'';
+                            echo ">$pi->nik</option>";
                           }
                         ?>
-                      </select>
-                    </div>
-                    <div class="form-group" id="idpasienibudiv">
-                      <input type="hidden" class="form-control" name="id_pasien_ibu" required>
+                      </select> -->
                     </div>
                     <div class="form-group col-xs-4" id="namadiv">
                       <label>Nama Pasien
                       </label>
-                      <input type="text" class="form-control input-lg" name="nama" readonly>
+                      <input type="text" class="form-control input-lg" name="nama" value="<?php echo $detail->nama; ?>" readonly>
                     </div>
                     <div class="form-group col-xs-4" id="usiadiv">
                       <label>Usia
                       </label>
-                      <input type="text" class="form-control input-lg" name="usia" readonly>
+                      <input type="text" class="form-control input-lg" name="usia" value="<?php echo $detail->usia; ?>" readonly>
                     </div>
                   </div>
                 </div>
@@ -142,24 +144,24 @@
                     <div class="form-group col-xs-4" id="pekerjaandiv">
                       <label>Pekerjaan
                       </label>
-                      <input type="text" class="form-control input-lg" name="pekerjaan" readonly>
+                      <input type="text" class="form-control input-lg" name="pekerjaan" value="<?php echo $detail->pekerjaan; ?>" readonly>
                     </div>
                     <div class="form-group col-xs-4" id="kehamilandiv">
                       <label>Kehamilan Ke
                       </label>
-                      <input type="text" class="form-control input-lg" name="kehamilan_ke" readonly>
+                      <input type="text" class="form-control input-lg" name="kehamilan_ke" value="<?php echo $detail->kehamilan_ke; ?>" readonly>
                     </div>
                     <div class="form-group col-xs-4" id="nojkndiv">
                       <label>No JKN
                       </label>
-                      <input type="text" class="form-control input-lg" name="no_jkn" readonly>
+                      <input type="text" class="form-control input-lg" name="no_jkn" value="<?php echo $detail->no_jkn; ?>" readonly>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-success pull-right" name="simpan" id="simpan">
-                    <i class="fa fa-book"></i> Cek Data Pasien
-                  </button>
+                  <div class="col-lg-12">
+                    <a href='catatan_persalinan' class="btn btn-warning margin pull-left">Kembali</a>
+                  </div>
                 </div>
               </div>
               <div class="box-body">
@@ -185,7 +187,7 @@
                           if(isset($row)){
                             $no=1;
                             foreach($row as $a){
-                              $url="transaksi/catatan_persalinan_detail_form/";
+                              $url="transaksi/catatan_persalinan_detail_form/$a->id_persalinan";
                               echo"<tr>"
                                   .  "<td>".$no."</td>"
                                   .  "<td >".$a->nik."</td>"
