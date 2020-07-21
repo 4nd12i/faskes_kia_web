@@ -265,7 +265,7 @@ class M_master extends CI_Model
     }
 
     function getHistoryProgramKB($namapeserta){
-  	$query="select * from t_programkb where nama_peserta like '%$namapeserta%' ST = 1";
+  	$query="select * from t_programkb where nama_peserta like '%$namapeserta%' AND ST = 1";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){

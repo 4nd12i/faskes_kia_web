@@ -50,7 +50,7 @@
                       if(isset($row)){
                         $no=1;
                         foreach($row as $a){
-                          $url="master/bidan_detail_form/";
+                          $url="transaksi/catatan_programkb_detail_form/$a->id_programkb";
                           echo"<tr>"
                               .  "<td>".$no."</td>"
                               .  "<td >".$a->no_registrasi."</td>"

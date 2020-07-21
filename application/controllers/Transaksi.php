@@ -158,7 +158,7 @@ class Transaksi extends CI_Controller {
     $namapeserta=$this->input->post('nama_peserta');
     $data['detail']=$this->M_master->getPesertaKBbyID($namapeserta);
 		$data['row']=$this->M_master->getHistoryProgramKB($namapeserta);
-		$data['main_content']="transaksi/catatan_pasienanak_hasil";
+		$data['main_content']="transaksi/catatan_programkb_hasil";
 		$this->load->view('template/main',$data);
 	}
 
@@ -166,9 +166,9 @@ class Transaksi extends CI_Controller {
 	{
 		$id=$this->uri->segment(3);
 	  $this->load->model('M_master');
-	  $data['detail']=$this->M_master->getCatatanImunisasiAnakbyID($id);
+	  $data['detail']=$this->M_master->getCatatanProgramKBbyID($id);
 
-		$data['main_content']="transaksi/catatan_pasien_anak_detail";
+		$data['main_content']="transaksi/catatan_programkb_detail";
 		$this->load->view('template/main',$data);
 	}
 

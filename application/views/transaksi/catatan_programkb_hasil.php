@@ -85,65 +85,63 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-success pull-right" name="simpan" id="simpan">
-                    <i class="fa fa-book"></i> Cek Data Pasien
-                  </button>
+                  <div class="col-lg-12">
+                    <a href='catatan_programkb' class="btn btn-warning margin pull-left">Kembali</a>
+                  </div>
                 </div>
               </div>
               <div class="box-body">
                 <div class="form-group" id="tabeldiv">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>NIK</th>
-                        <th>Nama Lengkap</th>
-                        <th>Alamat Pasien</th>
-                        <th>Tempat, Tgl Lahir</th>
-                        <th>Kehamilan Ke</th>
-                        <th>Usia</th>
-                        <th>No. JKN
-                          <th>Action</th>
-                        </tr>
-                      </thead>
+                    <tr>
+                      <th>No</th>
+                      <th>No Registrasi</th>
+                      <th>Tempat Pelayanan</th>
+                      <th>Tgl Periksa</th>
+                      <th>Tgl Tindakan</th>
+                      <th>Tgl Kembali</th>
+                      <th>Metode Kontrasepsi</th>
+                      <th>Keterangan</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
 
-                      <tbody>
-                        <?php
+                    <tbody>
+                      <?php
                         // print_r($row);
-                        if(isset($row)){
-                          $no=1;
-                          foreach($row as $a){
-                            $url="master/pasienibu_update_form/$a->id_pasien_ibu";
-                            $url1="master/pasienibu_delete_form/$a->id_pasien_ibu";
-                            echo"<tr>"
-                            .  "<td>".$no."</td>"
-                            .  "<td >".$a->nik."</td>"
-                            .  "<td >".$a->nama."</td>"
-                            .  "<td >".$a->alamat."</td>"
-                            .  "<td >".$a->tempat_lahir.", ".mediumdate_indo($a->tgl_lahir)."</td>"
-                            .  "<td ><center>".$a->kehamilan_ke."</center></td>"
-                            .  "<td ><center>".$a->usia."</center></td>"
-                            .  "<td >".$a->no_jkn."</td>"
-                            .  "<td >"
-                            .  "<a href='".site_url($url)."' class='btn btn-primary margin'> <i class='fa fa-edit'></i> Edit </a>&nbsp;"
-                            .  "<a href='".site_url($url1)."' class='btn btn-danger margin'> <i class='fa fa-remove'></i> Hapus </a>"
-                            .  "</td>"
-                            .  "</tr>";
-                            $no++;
-                          }
+                          if(isset($row)){
+                            $no=1;
+                            foreach($row as $a){
+                              $url="transaksi/catatan_programkb_detail_form/$a->id_programkb";
+                              echo"<tr>"
+                                  .  "<td>".$no."</td>"
+                                  .  "<td >".$a->no_registrasi."</td>"
+                                  .  "<td >".$a->tempat_pelayanan."</td>"
+                                  .  "<td >".mediumdate_indo($a->tgl_mulai)."</td>"
+                                  .  "<td >".mediumdate_indo($a->tgl_tindakan)."</td>"
+                                  .  "<td >".mediumdate_indo($a->tgl_kembali)."</td>"
+                                  .  "<td >".$a->metode_kontrasepsi."</td>"
+                                  .  "<td >".$a->keterangan."</td>"
+                                  .  "<td >"
+                                  .  "<a href='".site_url($url)."' class='btn bg-purple margin'> <i class='fa fa-book'></i> Detail </a>&nbsp;"
+                                  .  "</td>"
+                                  .  "</tr>";
+                              $no++;
+                            }
                         }
-                        ?>
-                      </tbody>
-                      <!-- <tfoot>
-                      <tr>
+                      ?>
+                    </tbody>
+                    <!-- <tfoot>
+                    <tr>
                       <th>Rendering engine</th>
                       <th>Browser</th>
                       <th>Platform(s)</th>
                       <th>Engine version</th>
                       <th>CSS grade</th>
                     </tr>
-                  </tfoot> -->
-                </table>
+                    </tfoot> -->
+                  </table>
               </div>
             </div>
               <!-- /.box-body -->
