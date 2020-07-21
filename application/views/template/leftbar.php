@@ -66,8 +66,8 @@ riwayat<aside class="main-sidebar">
           <hr/>
           <li><a href="<?php echo site_url('transaksi/catatan_pasienibu'); ?>"><i class="fa fa-circle-o"></i> Catatan Kesehatan Ibu</a></li>
           <li><a href="<?php echo site_url('transaksi/catatan_pasienanak'); ?>"><i class="fa fa-circle-o"></i> Catatan Kesehatan Anak</a></li>
-          <li><a href="<?php echo site_url('transaksi/catatan_pasienanak'); ?>"><i class="fa fa-circle-o"></i> Catatan Persalinan</a></li>
-          <li><a href="<?php echo site_url('transaksi/catatan_pasienanak'); ?>"><i class="fa fa-circle-o"></i> Catatan Program KB</a></li>
+          <li><a href="<?php echo site_url('transaksi/catatan_persalinan'); ?>"><i class="fa fa-circle-o"></i> Catatan Persalinan</a></li>
+          <li><a href="<?php echo site_url('transaksi/catatan_programkb'); ?>"><i class="fa fa-circle-o"></i> Catatan Program KB</a></li>
         </ul>
       </li>
       <li class="treeview">

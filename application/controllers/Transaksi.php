@@ -80,6 +80,26 @@ class Transaksi extends CI_Controller {
 		$this->load->view('template/main',$data);
 	}
 
+  public function catatan_pasienanak_hasil()
+	{
+		$this->load->model('M_master');
+    $idpasienanak=$this->input->post('id_pasien_anak');
+    $data['detail']=$this->M_master->getPasienAnakbyID($idpasienanak);
+		$data['row']=$this->M_master->getHistoryImunisasiAnak($idpasienanak);
+		$data['main_content']="transaksi/catatan_pasienanak_hasil";
+		$this->load->view('template/main',$data);
+	}
+
+  public function catatan_pasienanak_detail_form()
+	{
+		$id=$this->uri->segment(3);
+	  $this->load->model('M_master');
+	  $data['detail']=$this->M_master->getCatatanImunisasiAnakbyID($id);
+
+		$data['main_content']="transaksi/catatan_pasien_anak_detail";
+		$this->load->view('template/main',$data);
+	}
+
   public function catatan_programkb_add()
 	{
 		$this->load->model('M_master');

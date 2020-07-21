@@ -77,8 +77,8 @@
                     <label>Nama Lengkap Anak
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="hidden" class="form-control" name="nama" value='<?php echo $detail->nama; ?>' required>
-                    <!-- <select name="nama" id="nama" class="form-control select2" style="width: 100%;" onchange="javascript:getNamaAyah();" required>
+                    <input type="text" class="form-control" name="nama" value='<?php echo $detail->nama; ?>' readonly>
+                    <!-- <select name="nama" id="nama" class="form-control select2" style="width: 100%;" onchange="javascript:getNamaAyah();" readonly>
                       <option value=""></option>
                       <?php
                         foreach($pasienanak as $pa){
@@ -88,10 +88,10 @@
                     </select> -->
                   </div>
                   <div class="form-group" id="idpasienanakdiv">
-                    <input type="hidden" class="form-control" name="id_pasien_anak" value='<?php echo $detail->id_pasien_anak; ?>' required>
+                    <input type="hidden" class="form-control" name="id_pasien_anak" value='<?php echo $detail->id_pasien_anak; ?>' readonly>
                   </div>
                   <div class="form-group" id="idpasienibudiv">
-                    <input type="hidden" class="form-control" value="<?php $idbidan=$this->session->userdata('id_bidan'); echo $idbidan; ?>" name="id_bidan" required>
+                    <input type="hidden" class="form-control" value="<?php $idbidan=$this->session->userdata('id_bidan'); echo $idbidan; ?>" name="id_bidan" readonly>
                   </div>
                   <div class="form-group" id="namaayahdiv">
                     <label>Nama Ayah
@@ -112,7 +112,7 @@
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="input-group date">
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tgl_periksa" value='<?php echo $detail->tgl_periksa; ?>' required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tgl_periksa" value='<?php echo $detail->tgl_periksa; ?>' readonly>
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
@@ -122,28 +122,28 @@
                     <label>Usia Anak
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="number" class="form-control" placeholder="Contoh : isi angka 2 untuk 2 bulan" name="usia" value='<?php echo $detail->usia; ?>' required>
+                    <input type="number" class="form-control" placeholder="Contoh : isi angka 2 untuk 2 bulan" name="usia" value='<?php echo $detail->usia; ?>' readonly>
                   </div>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-6">
                       <label>Tinggi Badan
                         <span style="color: red;"><b>* (Cm)</b></span>
                       </label>
-                      <input type="number" class="form-control" name="tinggi_badan" value='<?php echo $detail->tinggi_badan; ?>' required>
+                      <input type="number" class="form-control" name="tinggi_badan" value='<?php echo $detail->tinggi_badan; ?>' readonly>
                     </div>
                     <div class="form-group col-xs-6">
                       <label>Berat Badan
                         <span style="color: red;"><b>* (Kg)</b></span>
                       </label>
-                      <input type="number" class="form-control" name="berat_badan" value='<?php echo $detail->berat_badan; ?>' required>
+                      <input type="number" class="form-control" name="berat_badan" value='<?php echo $detail->berat_badan; ?>' readonly>
                     </div>
                   </div>
                   <div class="form-group">
                     <label>Jenis Imunisasi
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="jenis_imunisasi" value='<?php echo $detail->jenis_imunisasi; ?>' required>
-                    <!-- <select class="form-control select2" name="jenis_imunisasi" id="jenis_imunisasi" style="width: 100%;" required>
+                    <input type="text" class="form-control" name="jenis_imunisasi" value='<?php echo $detail->jenis_imunisasi; ?>' readonly>
+                    <!-- <select class="form-control select2" name="jenis_imunisasi" id="jenis_imunisasi" style="width: 100%;" readonly>
                        <option value=""></option>
                        <option value="HB-0">HB-0 (0-7 hari)</option>
                        <option value="BCG">BCG (0-2 Bulan)</option>
@@ -165,7 +165,7 @@
                     <label>Nasihat / Saran
                     </label>
                     <div class="box-body pad">
-                        <textarea id="editor1" name="keterangan" rows="10" cols="80" required>
+                        <textarea id="editor1" name="keterangan" rows="10" cols="80" readonly>
                           <?php echo $detail->keterangan; ?>
                         </textarea>
                     </div>

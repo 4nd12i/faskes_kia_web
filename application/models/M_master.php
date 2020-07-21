@@ -154,7 +154,7 @@ class M_master extends CI_Model
     }
 
     function getRiwayatKesehatanIbu(){
-  	$query="select mpi.nik, mpi.nama, tki.tgl_periksa, tki.kapan_kembali, tki.riwayat_penyakit, tki.keluhan_sekarang,
+  	$query="select tki.id_cek, mpi.nik, mpi.nama, tki.tgl_periksa, tki.kapan_kembali, tki.riwayat_penyakit, tki.keluhan_sekarang,
     tki.tekanan_darah, tki.umur_kehamilan, tki.letak_janin, tki.nasihat FROM m_pasien_ibu mpi INNER JOIN
     t_kesehatan_ibu tki ON mpi.id_pasien_ibu = tki.id_pasien_ibu WHERE tki.ST = 1 AND mpi.ST = 1";
     $q=$this->db->query($query);
@@ -167,7 +167,7 @@ class M_master extends CI_Model
     }
 
     function getRiwayatKesehatanAnak(){
-  	$query="select mpa.nama, mpa.nama_ayah, mpa.nama_ibu, tia.tgl_periksa, tia.usia, tia.jenis_imunisasi,
+  	$query="select tia.id_cek, mpa.nama, mpa.nama_ayah, mpa.nama_ibu, tia.tgl_periksa, tia.usia, tia.jenis_imunisasi,
             tia.keterangan FROM m_pasien_anak mpa INNER JOIN t_imunisasi_anak tia ON mpa.id_pasien_anak = tia.id_pasien_anak
             WHERE tia.ST = 1 AND mpa.ST = 1";
     $q=$this->db->query($query);
@@ -217,6 +217,19 @@ class M_master extends CI_Model
 
     function getHistoryKesehatanIbu($idpasienibu){
   	$query="select * from t_kesehatan_ibu where id_pasien_ibu = '$idpasienibu' AND ST ='1'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getHistoryImunisasiAnak($idpasienanak){
+  	$query="select tia.id_cek, mpa.nama, mpa.nama_ayah, mpa.nama_ibu, tia.tgl_periksa, tia.usia, tia.jenis_imunisasi,
+            tia.keterangan FROM m_pasien_anak mpa INNER JOIN t_imunisasi_anak tia ON mpa.id_pasien_anak = tia.id_pasien_anak
+            WHERE mpa.id_pasien_anak = '$idpasienanak' AND tia.ST = 1 AND mpa.ST = 1";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){
@@ -447,6 +460,17 @@ class M_master extends CI_Model
 
     function getCatatanKesehatanIbubyID($id){
     $query="select mpi.nik, mpi.nama, tki.* from t_kesehatan_ibu tki INNER JOIN m_pasien_ibu mpi ON tki.id_pasien_ibu = mpi.id_pasien_ibu where id_cek = '$id'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getCatatanImunisasiAnakbyID($id){
+    $query="select mpa.nama_ayah, mpa.nama, mpa.nama_ibu, tia.* from t_imunisasi_anak tia INNER JOIN m_pasien_anak mpa ON tia.id_pasien_anak = mpa.id_pasien_anak where id_cek = '$id'";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){

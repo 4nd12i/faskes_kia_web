@@ -75,27 +75,28 @@
                       <label>Nama Lengkap
                         <span style="color: red;"><b>*</b></span>
                       </label>
-                      <select name="nama" id="nama" class="form-control select2" style="width: 100%;" onchange="javascript:getNamaAyah();">
+                      <input type="text" class="form-control input-lg" value="<?php echo $detail->nama; ?>" name="nama" readonly>
+                      <!-- <select name="nama" id="nama" class="form-control select2" style="width: 100%;" onchange="javascript:getNamaAyah();">
                         <option value=""></option>
                         <?php
                           foreach($pasienanak as $pa){
                             echo "<option value='$pa->nama'>$pa->nama</option>";
                           }
                         ?>
-                      </select>
+                      </select> -->
                     </div>
                     <div class="form-group" id="idpasienanakdiv">
-                      <input type="hidden" class="form-control" name="id_pasien_anak" required>
+                      <input type="hidden" class="form-control" value="<?php echo $detail->id_pasien_anak; ?>" name="id_pasien_anak" required>
                     </div>
                     <div class="form-group col-xs-4" id="namaayahdiv">
                       <label>Nama Ayah
                       </label>
-                      <input type="text" class="form-control input-lg" name="nama_ayah" readonly>
+                      <input type="text" class="form-control input-lg" value="<?php echo $detail->nama_ayah; ?>"  name="nama_ayah" readonly>
                     </div>
                     <div class="form-group col-xs-4" id="namaibudiv">
                       <label>Nama Ibu
                       </label>
-                      <input type="text" class="form-control input-lg" name="nama_ibu" readonly>
+                      <input type="text" class="form-control input-lg" value="<?php echo $detail->nama_ibu; ?>"  name="nama_ibu" readonly>
                     </div>
                   </div>
                 </div>
@@ -119,9 +120,9 @@
                   </div>
                 </div> -->
                 <div class="form-group">
-                  <button type="submit" class="btn btn-success pull-right" name="simpan" id="simpan">
-                    <i class="fa fa-book"></i> Cek Data Pasien
-                  </button>
+                  <div class="col-lg-12">
+                    <a href='catatan_pasienanak' class="btn btn-warning margin pull-left">Kembali</a>
+                  </div>
                 </div>
               </div>
               <div class="box-body">
@@ -146,7 +147,7 @@
                           if(isset($row)){
                             $no=1;
                             foreach($row as $a){
-                              $url="master/pasienanak_update_form/$a->nama";
+                              $url="transaksi/catatan_pasienanak_detail_form/$a->id_cek";
                               echo"<tr>"
                                   .  "<td>".$no."</td>"
                                   .  "<td >".$a->nama."</td>"
