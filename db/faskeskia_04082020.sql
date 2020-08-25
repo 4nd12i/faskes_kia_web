@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2020 at 03:38 AM
+-- Generation Time: Aug 04, 2020 at 08:15 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -193,6 +193,13 @@ CREATE TABLE `t_imunisasi_anak` (
   `ST` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `t_imunisasi_anak`
+--
+
+INSERT INTO `t_imunisasi_anak` (`id_cek`, `id_pasien_anak`, `id_bidan`, `tgl_periksa`, `usia`, `berat_badan`, `tinggi_badan`, `jenis_imunisasi`, `keterangan`, `ST`) VALUES
+(1, 1, 1, '2020-06-26', 4, 3, 15, 'DPT-HB-Hib 2', '<p>Tidak Ada</p>\r\n', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -218,7 +225,7 @@ CREATE TABLE `t_kesehatan_ibu` (
   `kaki_bengkak` varchar(255) DEFAULT NULL,
   `beri_vitamin` varchar(255) DEFAULT NULL,
   `nasihat` varchar(255) DEFAULT NULL,
-  `kapan_kembali` varchar(255) DEFAULT NULL,
+  `kapan_kembali` date DEFAULT NULL,
   `ST` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -227,7 +234,7 @@ CREATE TABLE `t_kesehatan_ibu` (
 --
 
 INSERT INTO `t_kesehatan_ibu` (`id_cek`, `id_pasien_ibu`, `id_bidan`, `hpht`, `htp`, `tinggi_badan`, `berat_badan`, `riwayat_penyakit`, `tgl_periksa`, `keluhan_sekarang`, `tekanan_darah`, `umur_kehamilan`, `tinggi_fundus`, `letak_janin`, `denyut_jantung`, `kaki_bengkak`, `beri_vitamin`, `nasihat`, `kapan_kembali`, `ST`) VALUES
-(1, 2, 1, '12121', '12222', 165, 59, '<p>Tidak Ada</p>\r\n', '2020-06-15', '<p>Kaki Sakit</p>\n', '120', '7', '10', '<p>Rahim Atas</p>', '90', 'Iya', 'Iya', '<p>Harus Banyak Istirahat</p>\r\n', '2020/06/22', 1);
+(1, 2, 1, '12121', '12222', 165, 59, '<p>Tidak Ada</p>\r\n', '2020-06-15', '<p>Kaki Sakit</p>\n', '120', '7', '10', '<p>Rahim Atas</p>', '90', 'Iya', 'Iya', '<p>Harus Banyak Istirahat</p>\r\n', '2020-06-22', 1);
 
 -- --------------------------------------------------------
 
@@ -237,14 +244,38 @@ INSERT INTO `t_kesehatan_ibu` (`id_cek`, `id_pasien_ibu`, `id_bidan`, `hpht`, `h
 
 CREATE TABLE `t_log` (
   `id_log` int(11) NOT NULL,
-  `id_bidan` int(11) NOT NULL,
-  `id_pasien_ibu` int(11) NOT NULL,
-  `id_pasien_anak` int(11) NOT NULL,
+  `id_bidan` int(11) DEFAULT NULL,
+  `id_pasien_ibu` int(11) DEFAULT NULL,
+  `id_pasien_anak` int(11) DEFAULT NULL,
   `nama` varchar(255) NOT NULL,
   `tanggal` varchar(255) NOT NULL,
+  `jam` time NOT NULL,
   `jabatan` varchar(255) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_log`
+--
+
+INSERT INTO `t_log` (`id_log`, `id_bidan`, `id_pasien_ibu`, `id_pasien_anak`, `nama`, `tanggal`, `jam`, `jabatan`, `status`) VALUES
+(1, 1, NULL, NULL, 'Administrator', '2020-07-07', '19:55:21', 'administrator', 'Login'),
+(2, 1, NULL, NULL, 'Administrator', '2020-07-07', '20:12:08', 'administrator', 'Login'),
+(3, 2, NULL, NULL, 'dona', '2020-07-07', '20:20:21', 'bidan', 'Login'),
+(4, 1, NULL, NULL, 'Administrator', '2020-07-07', '11:16:00', 'administrator', 'Login'),
+(5, 1, NULL, NULL, 'Administrator', '2020-07-07', '04:18:14', 'administrator', 'Login'),
+(6, 1, NULL, NULL, 'Administrator', '2020-07-08', '06:18:28', 'administrator', 'Login'),
+(7, 1, NULL, NULL, 'Administrator', '2020-07-08', '04:43:15', 'administrator', 'Login'),
+(8, 1, NULL, NULL, 'Administrator', '2020-07-08', '05:04:53', 'administrator', 'Login'),
+(9, 1, NULL, NULL, 'Administrator', '2020-07-13', '07:43:31', 'administrator', 'Login'),
+(10, 1, NULL, NULL, 'Administrator', '2020-07-15', '09:20:07', 'administrator', 'Login'),
+(11, 1, NULL, NULL, 'Administrator', '2020-07-18', '11:27:54', 'administrator', 'Login'),
+(12, 1, NULL, NULL, 'Administrator', '2020-07-21', '04:38:25', 'administrator', 'Login'),
+(13, 1, NULL, NULL, 'Administrator', '2020-07-21', '12:13:51', 'administrator', 'Login'),
+(14, 1, NULL, NULL, 'Administrator', '2020-07-21', '12:27:28', 'administrator', 'Login'),
+(15, 1, NULL, NULL, 'Administrator', '2020-07-21', '02:53:05', 'administrator', 'Login'),
+(16, 1, NULL, NULL, 'Administrator', '2020-07-21', '04:13:32', 'administrator', 'Login'),
+(17, 1, NULL, NULL, 'Administrator', '2020-08-04', '07:58:27', 'administrator', 'Login');
 
 -- --------------------------------------------------------
 
@@ -263,6 +294,13 @@ CREATE TABLE `t_persalinan` (
   `keadaan_ibu` varchar(255) DEFAULT NULL,
   `ST` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_persalinan`
+--
+
+INSERT INTO `t_persalinan` (`id_persalinan`, `id_pasien_ibu`, `id_bidan`, `tgl_persalinan`, `usia_kehamilan`, `penolong_persalinan`, `cara_persalinan`, `keadaan_ibu`, `ST`) VALUES
+(1, 2, 1, '2020-06-16', 8, 'Suster', 'Persalinan Normal', '<p>Sehat</p>\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -285,6 +323,13 @@ CREATE TABLE `t_programkb` (
   `keterangan` varchar(255) DEFAULT NULL,
   `ST` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_programkb`
+--
+
+INSERT INTO `t_programkb` (`id_programkb`, `no_registrasi`, `nama_peserta`, `usia`, `suami_istri`, `alamat`, `tempat_pelayanan`, `metode_kontrasepsi`, `tgl_mulai`, `tgl_tindakan`, `tgl_kembali`, `keterangan`, `ST`) VALUES
+(1, 'KB/001/VI/2020', 'William', 34, 'Eva', '<p>Jl. Kebraon No 11</p>\r\n', 'Posyandu Bunga', 'Kondom', '2020-06-23', '2020-06-24', '2020-06-30', '<p>Sehat</p>\r\n', 1);
 
 --
 -- Indexes for dumped tables
@@ -390,7 +435,7 @@ ALTER TABLE `m_setting`
 -- AUTO_INCREMENT for table `t_imunisasi_anak`
 --
 ALTER TABLE `t_imunisasi_anak`
-  MODIFY `id_cek` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_kesehatan_ibu`
@@ -402,19 +447,19 @@ ALTER TABLE `t_kesehatan_ibu`
 -- AUTO_INCREMENT for table `t_log`
 --
 ALTER TABLE `t_log`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `t_persalinan`
 --
 ALTER TABLE `t_persalinan`
-  MODIFY `id_persalinan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_persalinan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t_programkb`
 --
 ALTER TABLE `t_programkb`
-  MODIFY `id_programkb` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_programkb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

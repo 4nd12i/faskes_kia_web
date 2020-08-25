@@ -85,8 +85,22 @@ class Master extends CI_Controller {
 
 	public function bidan_add_form()
 	{
+		// Config bidan add form
 		$this->load->model('M_master');
 		$data['idbidan']=$this->M_master->getIdBidan();
+
+		// Config Google Maps
+		$this->load->library('googlemaps');
+		$config=array();
+		$config['center']="37.4419, -122.1419";
+		$config['zoom']=13;
+		$config['map_height']="500px";
+		$this->googlemaps->initialize($config);
+		$marker=array();
+		$marker['position']="37.4419, -122.1419";
+		$this->googlemaps->add_marker($marker);
+		$data['map']=$this->googlemaps->create_map();
+
     $data['main_content']="master/bidan_add";
 		$this->load->view('template/main',$data);
 	}

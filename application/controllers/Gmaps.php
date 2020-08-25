@@ -14,39 +14,39 @@ class Gmaps extends CI_Controller {
     $this->load->model('M_gmaps');
    }
 
-        function index(){
-         //merupakan fungsi javascript ketika da lokasi yang
-         //di klik maka akan mengambil nilai longitude dan latitude yang di klik
-         $diklik = 'window.open("get_lokasi/"+
+    function index(){
+       //merupakan fungsi javascript ketika da lokasi yang
+       //di klik maka akan mengambil nilai longitude dan latitude yang di klik
+       $diklik = 'window.open("get_lokasi/"+
        event.latLng.lat()+"/"+
        event.latLng.lng(),"_self")';
 
-    //konfigurasi untuk posisi tengah map ketika
-    //di tampilkan
-       $config['center'] = '37.4419, -122.1419';
-       //konfig pembesaran saat dimuat
-    $config['zoom'] = 'auto';
-    //mengaktifkan geocaching
-    $config['geocodeCaching'] = TRUE;
-    //menyimpan variabel javascript di atas
-    //kedalam konfigurasi
-    $config['onclick'] = $diklik;
+      //konfigurasi untuk posisi tengah map ketika
+      //di tampilkan
+      $config['center'] = '37.4419, -122.1419';
+      //konfig pembesaran saat dimuat
+      $config['zoom'] = 'auto';
+      //mengaktifkan geocaching
+      $config['geocodeCaching'] = TRUE;
+      //menyimpan variabel javascript di atas
+      //kedalam konfigurasi
+      $config['onclick'] = $diklik;
 
-    //menginisialisasi konfigurasi
-    $this->googlemaps->initialize($config);
+      //menginisialisasi konfigurasi
+      $this->googlemaps->initialize($config);
 
-    //proses membuat marker
-    $marker = array();
-    //posisi marker
-    $marker['position'] = '37.429, -122.1419';
-    //menambahka marker
-    $this->googlemaps->add_marker($marker);
-    //membuat map
-    $data['map'] = $this->googlemaps->create_map();
-    //load ke view
-    $this->load->view('maps/v_gmap', $data);
+      //proses membuat marker
+      $marker = array();
+      //posisi marker
+      $marker['position'] = '37.429, -122.1419';
+      //menambahka marker
+      $this->googlemaps->add_marker($marker);
+      //membuat map
+      $data['map'] = $this->googlemaps->create_map();
+      //load ke view
+      $this->load->view('maps/v_gmap', $data);
 
-      }
+    }
       //fungsi untuk mendapatkan lokasi latitude dan longitude dan melakukan proses reverse
       function get_lokasi($lat, $long){
     $address_details = $this->geocoder->reverse_geocode($lat, $long);

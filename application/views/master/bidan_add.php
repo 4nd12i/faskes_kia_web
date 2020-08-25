@@ -120,7 +120,9 @@
                     <label>Lokasi Praktek Bidan
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <div id="map" class="map"></div>
+                    <!-- <div id="map" class="map"></div> -->
+                    <?php echo $map['html'];?>
+                    <?php echo $map['js'];?>
                   </div>
                   <div class="form-group">
                     <h3><i class="fa fa-book margin-r-5"></i> Data Pendidikan</h3>
