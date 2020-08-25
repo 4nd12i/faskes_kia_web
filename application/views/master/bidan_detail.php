@@ -211,9 +211,11 @@
                     <div class="col-xs-1">
                       <label>:</label>
                     </div>
-                    <div class="col-xs-8">
+
+                    <div class="col-xs-12">
                       <p class="text-muted">
-                        <?php echo $detail->lokasi_bidan; ?>
+                        <?php echo $map['js'];?>
+                        <?php echo $map['html'];?>
                       </p>
                     </div>
                   </div>

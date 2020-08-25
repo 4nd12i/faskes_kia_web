@@ -245,7 +245,9 @@
                   <label>Lokasi Pasien Ibu
                     <span style="color: red;"><b>*</b></span>
                   </label>
-                  <div id="map" class="map"></div>
+                  <!-- <div id="map" class="map"></div> -->
+                  <?php echo $map['js'];?>
+                  <?php echo $map['html'];?>
                 </div>
                 <div class="form-group">
                   <h3><i class="fa fa-plus-square margin-r-5"></i> Data Medis</h3>
