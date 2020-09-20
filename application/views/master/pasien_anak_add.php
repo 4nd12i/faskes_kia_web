@@ -31,7 +31,13 @@
                   <div class="form-group">
                     <label>No Urut Pasien Anak
                     </label>
-                    <input type="text" class="form-control" name="id_pasien_anak" value="<?php echo $id_pasien_anak; ?>" readonly required>
+                    <input type="text" class="form-control" name="id_pasien_anak" value="<?php
+                    if($id_pasien_anak==0){
+                      echo '1';
+                    }else{
+                      echo $id_pasien_anak;
+                    }
+                    ?>" readonly required>
                   </div>
                   <div class="form-group">
                     <label>Nama Lengkap

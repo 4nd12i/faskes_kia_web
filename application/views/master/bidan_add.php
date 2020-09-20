@@ -33,7 +33,13 @@
                   <div class="form-group">
                     <label>Counter ID
                     </label>
-                    <input type="text" class="form-control" name="idbidan" value="<?php echo $idbidan; ?>" readonly required>
+                    <input type="text" class="form-control" name="idbidan" value="<?php
+                    if($idbidan==0){
+                      echo '1';
+                    }else{
+                      echo $idbidan;
+                    }
+                    ?>" readonly required>
                   </div>
                   <div class="form-group">
                     <label>No. SIPB

@@ -68,16 +68,18 @@ class Master extends CI_Controller {
 		$id=$this->uri->segment(3);
 	  $this->load->model('M_master');
 	  $data['detail']=$this->M_master->getBidanbyID($id);
+		$longitude=$this->M_master->getDataLongitudeBidan($id);
+		$latitude=$this->M_master->getDataLatitudeBidan($id);
 
 		// Config Google Maps
 		$this->load->library('googlemaps');
 		$config=array();
-		$config['center']="-7.157566, 112.655677";
+		$config['center']= $longitude.", ".$latitude;
 		$config['zoom']=13;
 		$config['map_height']="500px";
 		$this->googlemaps->initialize($config);
 		$marker=array();
-		$marker['position']="-7.157566, 112.655677";
+		$marker['position']=$longitude.", ".$latitude;
 		$this->googlemaps->add_marker($marker);
 		$data['map']=$this->googlemaps->create_map();
 

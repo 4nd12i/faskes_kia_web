@@ -84,6 +84,19 @@ riwayat<aside class="main-sidebar">
           <li><a href="<?php echo site_url('riwayat/riwayatprogramkb'); ?>"><i class="fa fa-circle-o"></i> Riwayat Program KB</a></li>
         </ul>
       </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Layanan Informasi</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo site_url('informasi/semuaBeritaUtama'); ?>"><i class="fa fa-circle-o"></i> Berita Utama </a></li>
+          <li><a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>"><i class="fa fa-circle-o"></i> Berita Terbaru </a></li>
+          <li><a href="<?php echo site_url('informasi/semuaTips'); ?>"><i class="fa fa-circle-o"></i> Tips Pola Hidup Sehat </a></li>
+        </ul>
+      </li>
       <!-- <li class="treeview">
         <a href="#">
           <i class="fa fa-book"></i> <span>Laporan</span>

@@ -85,6 +85,11 @@ class M_master extends CI_Model
       return $isi;
     }
 
+    function insertBeritaTerbaru($data){
+  	$isi=$this->db->insert('t_berita',$data);
+      return $isi;
+    }
+
     function updateBidan($data){
     $idbidan=$data['id_bidan'];
     $this->db->where('id_bidan',$idbidan);
@@ -110,6 +115,13 @@ class M_master extends CI_Model
     $username=$data['username'];
     $this->db->where('username',$username);
   	$update=$this->db->update('m_pengguna',$data);
+      return $update;
+    }
+
+    function updateBeritaTerbaru($data){
+    $id=$data['id'];
+    $this->db->where('id',$id);
+    $update=$this->db->update('m_setting',$data);
       return $update;
     }
 
@@ -155,6 +167,17 @@ class M_master extends CI_Model
 
     function getDataProgramKB(){
   	$query="select * from t_programkb where ST ='1'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getDataBeritaTerbaru(){
+  	$query="select * from t_berita where ST ='1'";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){
@@ -440,6 +463,17 @@ class M_master extends CI_Model
       }
     }
 
+    function getBeritaTerbarubyID($id){
+    $query="select * from t_berita where id_berita = '$id'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
     function getUserAdministrator($id){
     $query="select * from m_pengguna where hak = '$id'";
     $q=$this->db->query($query);
@@ -551,6 +585,20 @@ class M_master extends CI_Model
 
     function getIdBidan(){
       $sql="select MAX(id_bidan)+1 as id from m_bidan";
+      $q=$this->db->query($sql);
+      if ($q->num_rows() > 0)
+      {
+          $row = $q->row();
+          $id=$row->id;
+      }else{
+        $id="";
+      }
+
+      return $id;
+    }
+
+    function getIdBerita(){
+      $sql="select MAX(id_berita)+1 as id from t_berita";
       $q=$this->db->query($sql);
       if ($q->num_rows() > 0)
       {
@@ -752,6 +800,58 @@ class M_master extends CI_Model
     {
         $row = $q->row();
         $nm=$row->usia;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataLongitudeBidan($id){
+  	$sql="select longitude from m_bidan where id_bidan = '$id'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->longitude;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataLatitudeBidan($id){
+  	$sql="select latitude from m_bidan where id_bidan = '$id'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->latitude;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataLongitudePasienIbu($id){
+  	$sql="select longitude from m_pasien_ibu where id_pasien_ibu = '$id'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->longitude;
+    }else{
+      $nm="";
+    }
+      return $nm;
+    }
+
+    function getDataLatitudePasienIbu($id){
+  	$sql="select latitude from m_pasien_ibu where id_pasien_ibu = '$id'";
+    $q=$this->db->query($sql);
+    if ($q->num_rows() > 0)
+    {
+        $row = $q->row();
+        $nm=$row->latitude;
     }else{
       $nm="";
     }
