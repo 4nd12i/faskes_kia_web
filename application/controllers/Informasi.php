@@ -17,6 +17,15 @@ class Informasi extends CI_Controller {
 	public function index()
 	{
 		echo "informasi";
+		echo shortdate_indo('2017-09-5');
+		echo "<br/>";
+		echo date_indo('2017-09-5');
+		echo "<br/>";
+		echo mediumdate_indo('2017-09-5');
+		echo "<br/>";
+		echo longdate_indo('2017-09-5');
+		echo "<br/>";
+		echo date('H:i:s');
 	}
 
 	function error404(){
@@ -62,6 +71,16 @@ class Informasi extends CI_Controller {
 	{
 		$this->load->model('M_master');
 		$data['idberita']=$this->M_master->getIdBerita();
+
+  	$data['main_content']="informasi/beritaTerbaru_add";
+		$this->load->view('template/main',$data);
+	}
+
+	public function detailBeritaTerbaru()
+	{
+		$id=$this->uri->segment(3);
+		$this->load->model('M_master');
+		$data['detail']=$this->M_master->getBeritabyID($id);
 
   	$data['main_content']="informasi/beritaTerbaru_add";
 		$this->load->view('template/main',$data);

@@ -34,12 +34,10 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>No SIPB</th>
-                  <th>Nama Lengkap</th>
-                  <th>Alamat</th>
-                  <th>Tempat Tanggal Lahir</th>
-                  <th>No Telp</th>
-                  <th>No HP</th>
+                  <th>Foto Sampul</th>
+                  <th>Judul Berita</th>
+                  <th>Tanggal Tayang</th>
+                  <th>Penulis</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -50,17 +48,15 @@
                       if(isset($row)){
                         $no=1;
                         foreach($row as $a){
-                          $url="master/bidan_detail_form/$a->id_bidan";
-                          $url1="master/bidan_update_form/$a->id_bidan";
-                          $url2="master/bidan_delete_form/$a->id_bidan";
+                          $url="informasi/detailBeritaTerbaru/$a->id_berita";
+                          $url1="informasi/editBeritaTerbaru/$a->id_berita";
+                          $url2="informasi/bidan_delete_form/$a->id_berita";
                           echo"<tr>"
                               .  "<td>".$no."</td>"
-                              .  "<td >".$a->no_sipb."</td>"
-                              .  "<td >".$a->nama."</td>"
-                              .  "<td >".$a->alamat_domisili."</td>"
-                              .  "<td >".$a->tempat_lahir.", ".mediumdate_indo($a->tgl_lahir)."</td>"
-                              .  "<td >".$a->tlp."</td>"
-                              .  "<td >".$a->hp."</td>"
+                              .  "<td >".$a->fotosampul."</td>"
+                              .  "<td >".$a->judul."</td>"
+                              .  "<td >".mediumdate_indo($a->tanggal_posting)."</td>"
+                              .  "<td >".$a->penulis."</td>"
                               .  "<td >"
                               .  "<a href='".site_url($url)."' class='btn bg-purple margin'> <i class='fa fa-book'></i> Detail </a>&nbsp;"
                               .  "<a href='".site_url($url1)."' class='btn btn-warning margin'> <i class='fa fa-edit'></i> Edit </a>&nbsp;"

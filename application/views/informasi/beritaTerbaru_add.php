@@ -66,14 +66,14 @@
                     <label>Penulis
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="penulis" required>
+                    <input type="text" class="form-control" name="penulis" value="<?php $nama=$this->session->userdata('nama'); echo $nama; ?>" required>
                   </div>
                   <div class="form-group">
                     <label>Tanggal Posting
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="input-group date">
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_posting" required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_posting" value="<?php echo date('Y/m/d') ?>" required>
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>

@@ -464,7 +464,7 @@ class M_master extends CI_Model
     }
 
     function getBeritaTerbarubyID($id){
-    $query="select * from t_berita where id_berita = '$id'";
+    $query="select * from t_berita where id_berita = '$id' AND ST = 1";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){

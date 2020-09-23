@@ -171,14 +171,14 @@
                     <thead>
                       <tr>
                         <th>No</th>
-                        <th>NIK</th>
-                        <th>Nama Lengkap</th>
-                        <th>Tanggal Periksa</th>
-                        <th>Tanggal Kembali</th>
-                        <th>Kehamilan Ke</th>
-                        <th>Usia</th>
-                        <th>No. JKN
-                          <th>Action</th>
+                        <th>Tgl Periksa</th>
+                        <th>Usia</br>Kehamilan</th>
+                        <th>Keluhan</th>
+                        <th>Tekanan Darah</th>
+                        <th>Denyut Jantung</th>
+                        <th>Nasihat</th>
+                        <th>Tgl Kembali</th>
+                        <th>Action</th>
                         </tr>
                       </thead>
 

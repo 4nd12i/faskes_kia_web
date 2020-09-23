@@ -33,25 +33,19 @@
                   <div class="form-group">
                     <label>ID Berita
                     </label>
-                    <input type="text" class="form-control" name="idberita" value="<?php
-                    if($idberita==0){
-                      echo '1';
-                    }else{
-                      echo $idberita;
-                    }
-                    ?>" readonly required>
+                    <input type="text" class="form-control" name="idberita" value="<?php echo $detail->id_berita ?>" readonly required>
                   </div>
                   <div class="form-group">
                     <label>Judul Berita
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="judul" required>
+                    <input type="text" class="form-control" name="judul" value="<?php echo $detail->judul ?>" required>
                   </div>
                   <div class="form-group">
                     <label>Sampul Foto Berita
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="file" class="form-control" name="fotosampul">
+                    <input type="file" class="form-control" name="fotosampul" value="<?php echo $detail->fotosampul ?>">
                   </div>
                   <div class="form-group">
                     <label>Isi Berita
@@ -59,6 +53,7 @@
                     </label>
                     <div class="box-body pad">
                         <textarea id="editor1" name="isi" rows="10" cols="80">
+                            <?php echo $detail->isi ?>
                         </textarea>
                     </div>
                   </div>
@@ -66,14 +61,14 @@
                     <label>Penulis
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="penulis" required>
+                    <input type="text" class="form-control" name="penulis" value="<?php echo $detail->penulis ?>" required>
                   </div>
                   <div class="form-group">
                     <label>Tanggal Update
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="input-group date">
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_update" required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_update" value="<?php echo date('Y/m/d') ?>" required>
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
@@ -82,7 +77,7 @@
               </div>
               <div class="box-footer">
                 <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-left">Close</a>
-                <button type="submit" class="btn btn-success  pull-right" name="simpan" id="simpan"><i class="fa fa-plus"></i> Simpan </button>
+                <button type="submit" class="btn btn-primary pull-right" name="simpan" id="simpan"><i class="fa fa-edit"></i> Update </button>
               </div>
             </form>
             <!-- /.box-body -->
