@@ -50,7 +50,7 @@
                         foreach($row as $a){
                           $url="informasi/detailBeritaTerbaru/$a->id_berita";
                           $url1="informasi/editBeritaTerbaru/$a->id_berita";
-                          $url2="informasi/bidan_delete_form/$a->id_berita";
+                          $url2="informasi/hapusBeritaTerbaru/$a->id_berita";
                           echo"<tr>"
                               .  "<td>".$no."</td>"
                               .  "<td >".$a->fotosampul."</td>"

@@ -119,9 +119,9 @@ class M_master extends CI_Model
     }
 
     function updateBeritaTerbaru($data){
-    $id=$data['id'];
-    $this->db->where('id',$id);
-    $update=$this->db->update('m_setting',$data);
+    $id=$data['id_berita'];
+    $this->db->where('id_berita',$id);
+    $update=$this->db->update('t_berita',$data);
       return $update;
     }
 

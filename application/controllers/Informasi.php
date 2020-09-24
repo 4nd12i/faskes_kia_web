@@ -133,7 +133,7 @@ class Informasi extends CI_Controller {
 		$this->load->view('template/main',$data);
 	}
 
-	public function updateBeritaTerbaru()
+	public function BeritaTerbaruUpdate()
 	{
 		$this->load->model('M_master');
 
@@ -150,8 +150,7 @@ class Informasi extends CI_Controller {
 				'fotosampul'=>$fotosampul,
 				'penulis'=>$penulis,
 				'isi'=>$isi,
-				'tanggal_posting'=>$tanggal_posting,
-				'ST'=>1
+				'tanggal_update'=>$tanggal_update,
 		);
 
 		$update=$this->M_master->updateBeritaTerbaru($data);
@@ -161,7 +160,7 @@ class Informasi extends CI_Controller {
 										<a class="close" data-dismiss="alert">x</a>
 										<strong>SUKSES </strong> Data berhasil disimpan.
 								</div>');
-				$url="master/bidan";
+				$url="informasi/semuaBeritaTerbaru";
 				redirect($url);
 		}else{
 				$this->session->set_flashdata('msg','<div class="alert alert-error">
@@ -171,7 +170,17 @@ class Informasi extends CI_Controller {
 		}
 	}
 
-  public function hapusBeritaTerbaru()
+	public function hapusBeritaTerbaru()
+	{
+		$id=$this->uri->segment(3);
+		$this->load->model('M_master');
+		$data['detail']=$this->M_master->getBeritaTerbarubyID($id);
+
+		$data['main_content']="informasi/beritaTerbaru_edit";
+		$this->load->view('template/main',$data);
+	}
+
+  public function BeritaTerbaruDelete()
 	{
 		$this->load->model('M_master');
 
