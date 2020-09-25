@@ -90,6 +90,11 @@ class M_master extends CI_Model
       return $isi;
     }
 
+    function insertTips($data){
+  	$isi=$this->db->insert('t_tips',$data);
+      return $isi;
+    }
+
     function updateBidan($data){
     $idbidan=$data['id_bidan'];
     $this->db->where('id_bidan',$idbidan);
@@ -122,6 +127,13 @@ class M_master extends CI_Model
     $id=$data['id_berita'];
     $this->db->where('id_berita',$id);
     $update=$this->db->update('t_berita',$data);
+      return $update;
+    }
+
+    function updateTips($data){
+    $id=$data['id_tips'];
+    $this->db->where('id_tips',$id);
+    $update=$this->db->update('t_tips',$data);
       return $update;
     }
 
@@ -178,6 +190,17 @@ class M_master extends CI_Model
 
     function getDataBeritaTerbaru(){
   	$query="select * from t_berita where ST ='1'";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data[]=$row;
+          }
+        return $data;
+      }
+    }
+
+    function getDataTips(){
+  	$query="select * from t_tips where ST ='1'";
     $q=$this->db->query($query);
       if ($q->num_rows() > 0){
           foreach($q->result() as $row){
@@ -474,6 +497,17 @@ class M_master extends CI_Model
       }
     }
 
+    function getTipsbyID($id){
+    $query="select * from t_tips where id_tips = '$id' AND ST = 1";
+    $q=$this->db->query($query);
+      if ($q->num_rows() > 0){
+          foreach($q->result() as $row){
+            $data=$row;
+          }
+        return $data;
+      }
+    }
+
     function getUserAdministrator($id){
     $query="select * from m_pengguna where hak = '$id'";
     $q=$this->db->query($query);
@@ -599,6 +633,20 @@ class M_master extends CI_Model
 
     function getIdBerita(){
       $sql="select MAX(id_berita)+1 as id from t_berita";
+      $q=$this->db->query($sql);
+      if ($q->num_rows() > 0)
+      {
+          $row = $q->row();
+          $id=$row->id;
+      }else{
+        $id="";
+      }
+
+      return $id;
+    }
+
+    function getIdTips(){
+      $sql="select MAX(id_tips)+1 as id from t_tips";
       $q=$this->db->query($sql);
       if ($q->num_rows() > 0)
       {

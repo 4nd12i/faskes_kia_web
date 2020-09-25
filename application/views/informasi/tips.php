@@ -6,11 +6,11 @@
     <section class="content-header">
       <h1>
         Layanan Informasi
-        <small>Berita Terbaru</small>
+        <small>Tips Pola Hidup Sehat</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href='<?php echo site_url('master/bidan'); ?>'><i class="fa fa-dashboard"></i> Layanan Informasi </a></li>
-        <li class="active">Berita Terbaru</li>
+        <li class="active">Tips Hidup Sehat</li>
       </ol>
     </section>
 
@@ -23,8 +23,8 @@
           <!-- Box -->
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Semua Berita</h3>
-              <a href='<?php echo site_url('informasi/tambahBeritaTerbaru'); ?>' class="btn btn-success pull-right">
+              <h3 class="box-title">Semua Tips Pola Hidup Sehat</h3>
+              <a href='<?php echo site_url('informasi/tambahTips'); ?>' class="btn btn-success pull-right">
                 <i class="fa fa-plus"></i> Tambah
               </a>
             </div>
@@ -34,12 +34,10 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>No SIPB</th>
-                  <th>Nama Lengkap</th>
-                  <th>Alamat</th>
-                  <th>Tempat Tanggal Lahir</th>
-                  <th>No Telp</th>
-                  <th>No HP</th>
+                  <th>Foto Sampul</th>
+                  <th>Judul Berita</th>
+                  <th>Tanggal Tayang</th>
+                  <th>Penulis</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -50,17 +48,15 @@
                       if(isset($row)){
                         $no=1;
                         foreach($row as $a){
-                          $url="master/bidan_detail_form/$a->id_bidan";
-                          $url1="master/bidan_update_form/$a->id_bidan";
-                          $url2="master/bidan_delete_form/$a->id_bidan";
+                          $url="informasi/detailTips/$a->id_tips";
+                          $url1="informasi/editBeritaTerbaru/$a->id_tips";
+                          $url2="informasi/hapusBeritaTerbaru/$a->id_tips";
                           echo"<tr>"
                               .  "<td>".$no."</td>"
-                              .  "<td >".$a->no_sipb."</td>"
-                              .  "<td >".$a->nama."</td>"
-                              .  "<td >".$a->alamat_domisili."</td>"
-                              .  "<td >".$a->tempat_lahir.", ".mediumdate_indo($a->tgl_lahir)."</td>"
-                              .  "<td >".$a->tlp."</td>"
-                              .  "<td >".$a->hp."</td>"
+                              .  "<td >".$a->fotosampul."</td>"
+                              .  "<td >".$a->judul."</td>"
+                              .  "<td >".mediumdate_indo($a->tanggal_posting)."</td>"
+                              .  "<td >".$a->penulis."</td>"
                               .  "<td >"
                               .  "<a href='".site_url($url)."' class='btn bg-purple margin'> <i class='fa fa-book'></i> Detail </a>&nbsp;"
                               .  "<a href='".site_url($url1)."' class='btn btn-warning margin'> <i class='fa fa-edit'></i> Edit </a>&nbsp;"

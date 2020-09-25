@@ -28,17 +28,17 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <form method='post' name='form_utama' action='<?php echo site_url('informasi/hapusBeritaTerbaru'); ?>'>
+            <form method='post' name='form_utama' action='<?php echo site_url('informasi/BeritaTerbaruDelete'); ?>'>
               <div class="box-body">
                 <div class="form-group">
                   <p>Apakah anda yakin ingin menghapus berita "<b><?php echo $detail->judul; ?></b>" ?</p>
                 </div>
                 <div class="form-group">
-                  <input type="hidden" class="form-control" name="id_berita" value='<?php echo $detail->id_berita; ?>' required>
+                  <input type="hidden" class="form-control" name="idberita" value='<?php echo $detail->id_berita; ?>' required>
                 </div>
               </div>
               <div class="box-footer">
-                <a href="<?php echo site_url('master/bidan'); ?>" class="btn btn-default pull-left">Close</a>
+                <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-left">Close</a>
                 <button type="submit" class="btn btn-danger pull-right" name="simpan" id="simpan"><i class="fa fa-remove"></i> Hapus </button>
               </div>
             </form>

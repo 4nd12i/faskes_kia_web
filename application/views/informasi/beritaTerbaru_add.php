@@ -11,6 +11,7 @@
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Layanan Informasi </a></li>
         <li class="active">Berita Terbaru</li>
+        <li class="active">Tambah</li>
       </ol>
     </section>
 

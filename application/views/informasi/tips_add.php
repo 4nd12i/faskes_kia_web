@@ -6,11 +6,12 @@
     <section class="content-header">
       <h1>
         Layanan Informasi
-        <small>Tambah Berita Terbaru</small>
+        <small>Tips Pola Hidup Sehat</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Layanan Informasi </a></li>
-        <li class="active">Berita Terbaru</li>
+        <li class="active">Tips Hidup Sehat</li>
+        <li class="active">Tambah</li>
       </ol>
     </section>
 
@@ -24,37 +25,37 @@
           <div class="box">
             <div class="box-header">
               <div class="box-header with-border">
-                <h3 class="box-title">Tambah Berita Terbaru</h3>
+                <h3 class="box-title">Tambah Tips Pola Hidup Sehat</h3>
               </div>
             </div>
             <!-- /.box-header -->
-              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('informasi/BeritaTerbaruSave'); ?>'>
+              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('informasi/TipsSave'); ?>'>
                 <div class="box-body">
                   <div class="form-group">
-                    <label>ID Berita
+                    <label>ID Tips
                     </label>
-                    <input type="text" class="form-control" name="idberita" value="<?php
-                    if($idberita==0){
+                    <input type="text" class="form-control" name="idtips" value="<?php
+                    if($idtips==0){
                       echo '1';
                     }else{
-                      echo $idberita;
+                      echo $idtips;
                     }
                     ?>" readonly required>
                   </div>
                   <div class="form-group">
-                    <label>Judul Berita
+                    <label>Judul Tips Hidup Sehat
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <input type="text" class="form-control" name="judul" required>
                   </div>
                   <div class="form-group">
-                    <label>Sampul Foto Berita
+                    <label>Sampul Foto
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <input type="file" class="form-control" name="fotosampul">
                   </div>
                   <div class="form-group">
-                    <label>Isi Berita
+                    <label>Isi Artikel
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="box-body pad">
@@ -66,14 +67,14 @@
                     <label>Penulis
                       <span style="color: red;"><b>*</b></span>
                     </label>
-                    <input type="text" class="form-control" name="penulis" required>
+                    <input type="text" class="form-control" name="penulis" value="<?php $nama=$this->session->userdata('nama'); echo $nama; ?>" required>
                   </div>
                   <div class="form-group">
                     <label>Tanggal Posting
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="input-group date">
-                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_posting" required>
+                      <input type="text" class="form-control pull-right" id="datepicker" name="tanggal_posting" value="<?php echo date('Y/m/d') ?>" required>
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
@@ -81,7 +82,7 @@
                   </div>
               </div>
               <div class="box-footer">
-                <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-left">Close</a>
+                <a href="<?php echo site_url('informasi/semuaTips'); ?>" class="btn btn-default pull-left">Close</a>
                 <button type="submit" class="btn btn-success  pull-right" name="simpan" id="simpan"><i class="fa fa-plus"></i> Simpan </button>
               </div>
             </form>
