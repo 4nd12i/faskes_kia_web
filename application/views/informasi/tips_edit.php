@@ -29,27 +29,27 @@
               </div>
             </div>
             <!-- /.box-header -->
-              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('informasi/BeritaTerbaruUpdate'); ?>'>
+              <form method='post' name='form_utama' onSubmit='return validasi();' action='<?php echo site_url('informasi/TipsUpdate'); ?>'>
                 <div class="box-body">
                   <div class="form-group">
-                    <label>ID Berita
+                    <label>ID Tips
                     </label>
-                    <input type="text" class="form-control" name="idberita" value="<?php echo $detail->id_berita ?>" readonly required>
+                    <input type="text" class="form-control" name="idtips" value="<?php echo $detail->id_tips ?>" readonly required>
                   </div>
                   <div class="form-group">
-                    <label>Judul Berita
+                    <label>Judul Tips Hidup Sehat
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <input type="text" class="form-control" name="judul" value="<?php echo $detail->judul ?>" required>
                   </div>
                   <div class="form-group">
-                    <label>Sampul Foto Berita
+                    <label>Sampul Foto
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <input type="file" class="form-control" name="fotosampul" value="<?php echo $detail->fotosampul ?>">
                   </div>
                   <div class="form-group">
-                    <label>Isi Berita
+                    <label>Isi Artikel
                       <span style="color: red;"><b>*</b></span>
                     </label>
                     <div class="box-body pad">
@@ -77,7 +77,7 @@
                   </div>
               </div>
               <div class="box-footer">
-                <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-left">Close</a>
+                <a href="<?php echo site_url('informasi/semuaTips'); ?>" class="btn btn-default pull-left">Close</a>
                 <button type="submit" class="btn btn-primary pull-right" name="simpan" id="simpan"><i class="fa fa-edit"></i> Update </button>
               </div>
             </form>

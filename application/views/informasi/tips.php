@@ -49,8 +49,8 @@
                         $no=1;
                         foreach($row as $a){
                           $url="informasi/detailTips/$a->id_tips";
-                          $url1="informasi/editBeritaTerbaru/$a->id_tips";
-                          $url2="informasi/hapusBeritaTerbaru/$a->id_tips";
+                          $url1="informasi/editTips/$a->id_tips";
+                          $url2="informasi/hapusTips/$a->id_tips";
                           echo"<tr>"
                               .  "<td>".$no."</td>"
                               .  "<td >".$a->fotosampul."</td>"

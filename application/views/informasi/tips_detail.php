@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-right">Close</a>
+                <a href="<?php echo site_url('informasi/semuaTips'); ?>" class="btn btn-default pull-right">Close</a>
               </div>
             </form>
             <!-- /.box-body -->

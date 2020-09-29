@@ -6,11 +6,11 @@
     <section class="content-header">
       <h1>
         Layanan Informasi
-        <small>Hapus Berita Terbaru</small>
+        <small>Hapus Artikel Tips Kesehatan</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href='<?php echo site_url('master/bidan'); ?>'><i class="fa fa-dashboard"></i> Layanan Informasi </a></li>
-        <li class="active">Hapus Berita</li>
+        <li class="active">Hapus Artikel</li>
       </ol>
     </section>
 
@@ -24,21 +24,21 @@
           <div class="box">
             <div class="box-header">
               <div class="box-header with-border">
-                <h3 class="box-title"><b>Konfirmasi Hapus Berita</b></h3>
+                <h3 class="box-title"><b>Konfirmasi Hapus Artikel</b></h3>
               </div>
             </div>
             <!-- /.box-header -->
-            <form method='post' name='form_utama' action='<?php echo site_url('informasi/BeritaTerbaruDelete'); ?>'>
+            <form method='post' name='form_utama' action='<?php echo site_url('informasi/TipsDelete'); ?>'>
               <div class="box-body">
                 <div class="form-group">
-                  <p>Apakah anda yakin ingin menghapus berita "<b><?php echo $detail->judul; ?></b>" ?</p>
+                  <p>Apakah anda yakin ingin menghapus artikel "<b><?php echo $detail->judul; ?></b>" ?</p>
                 </div>
                 <div class="form-group">
-                  <input type="hidden" class="form-control" name="idberita" value='<?php echo $detail->id_berita; ?>' required>
+                  <input type="hidden" class="form-control" name="idtips" value='<?php echo $detail->id_tips; ?>' required>
                 </div>
               </div>
               <div class="box-footer">
-                <a href="<?php echo site_url('informasi/semuaBeritaTerbaru'); ?>" class="btn btn-default pull-left">Close</a>
+                <a href="<?php echo site_url('informasi/semuaTips'); ?>" class="btn btn-default pull-left">Close</a>
                 <button type="submit" class="btn btn-danger pull-right" name="simpan" id="simpan"><i class="fa fa-remove"></i> Hapus </button>
               </div>
             </form>
